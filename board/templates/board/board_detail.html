@@ -1,0 +1,10 @@
+<h1>{{ board.name }}</h1>
+<a href="{% url 'add_member' board.id %}">Mitglied hinzufügen</a>
+<h2>Beiträge</h2>
+<ul>
+    {% for card in cards %}
+        <li><strong>{{ card.title }}</strong> von {{ card.author }} am {{ card.created_at }}<br>{{ card.content }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_card' board.id %}">Neuen Beitrag erstellen</a>
+<a href="{% url 'board_list' %}">Zurück</a>

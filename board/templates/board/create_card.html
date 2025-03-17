@@ -1,0 +1,7 @@
+<h1>Neuer Beitrag für {{ board.name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Erstellen</button>
+</form>
+<a href="{% url 'board_detail' board.id %}">Zurück</a>
