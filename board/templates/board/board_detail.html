@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ board.name }}</title>
     <style> /* Move this to an extra file! */
+        html { /* board background */
+            background-color: #55565f !important;
+            color: white; /* default font color */
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
         .card {
             border-width: 3px;
             border-color: gray;
@@ -20,6 +30,7 @@
 </head>
 <body>
     <h1>{{ board.name }}</h1>
+    <a href="{% url 'board_list' %}">Zurück</a>
     <a href="{% url 'add_member' board.id %}">Mitglied hinzufügen</a>
     <h2>Beiträge</h2>
     <ul>
@@ -30,7 +41,12 @@
             </div>
         {% endfor %}
     </ul>
-    <a href="{% url 'create_card' board.id %}">Neuen Beitrag erstellen</a>
-    <a href="{% url 'board_list' %}">Zurück</a>
+
+    <button style="background-color: blue; padding: 10px 15px; border-width: 0px; border-radius: 12px;">
+        <a href="{% url 'create_card' board.id %}">
+            <span style="font-size: larger;">Neuen Beitrag erstellen</span>
+        </a>
+    </button>
+    
 </body>
 </html>
