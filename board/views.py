@@ -16,7 +16,7 @@ def board_detail(request, board_id):
     if request.user != board.owner and request.user not in board.members.all():
         return redirect("board_list")
     
-    cards = board.card_set.all()
+    cards = board.card_set.all().order_by("-created_at")
     return render(request, "board/board_detail.html", {"board": board, "cards": cards})
 
 @login_required
