@@ -1,7 +1,19 @@
-<h1>Deine Boards</h1>
-<ul>
-    {% for board in boards %}
-        <li><a href="{% url 'board_detail' board.id %}">{{ board.name }}</a></li>
-    {% endfor %}
-</ul>
-<a href="{% url 'create_board' %}">Neues Board erstellen</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
+</head>
+<body>
+    <h1>Deine Boards</h1>
+    <ul>
+        {% for board in boards %}
+            <li><a href="{% url 'board_detail' board.id %}">{{ board.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_board' %}">Neues Board erstellen</a>
+</body>
+</html>

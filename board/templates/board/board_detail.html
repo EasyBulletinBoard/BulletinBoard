@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ board.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
     <style> /* Move this to an extra file! */
         html { /* board background */
             background-color: #55565f !important;
@@ -23,7 +25,8 @@
             margin-bottom: 10px;
             display: inline-block;
             width: auto;
-            margin: 10px
+            margin: 10px;
+            border-radius: 12px;
         }
 
     </style>
@@ -35,7 +38,7 @@
     <h2>Beiträge</h2>
     <ul>
         {% for card in cards %}
-            <div class="card" style="">
+            <div class="card">
                 <strong>{{ card.title }}</strong> von {{ card.author }} am {{ card.created_at }}<br>
                 <p>{{ card.content }}</p>
             </div>
