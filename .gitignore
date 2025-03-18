@@ -1,2 +1,8 @@
 .venv
+
 *.sqlite3
+*.log
+*.pot
+*.pyc
+__pycache__
+media
