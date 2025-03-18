@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ board.name }}</title>
+    <style> /* Move this to an extra file! */
+        .card {
+            border-width: 3px;
+            border-color: gray;
+            border-style: dotted;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+            width: auto;
+            margin: 10px
+        }
+
+    </style>
 </head>
 <body>
     <h1>{{ board.name }}</h1>
@@ -11,7 +24,10 @@
     <h2>Beiträge</h2>
     <ul>
         {% for card in cards %}
-            <li><strong>{{ card.title }}</strong> von {{ card.author }} am {{ card.created_at }}<br>{{ card.content }}</li>
+            <div class="card" style="">
+                <strong>{{ card.title }}</strong> von {{ card.author }} am {{ card.created_at }}<br>
+                <p>{{ card.content }}</p>
+            </div>
         {% endfor %}
     </ul>
     <a href="{% url 'create_card' board.id %}">Neuen Beitrag erstellen</a>
