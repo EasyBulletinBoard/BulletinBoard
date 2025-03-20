@@ -4,6 +4,11 @@ from .models import Board, Card
 from .forms import BoardForm, CardForm, AddMemberForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
+
+def home(request):
+    return render(request, "board/home.html")
 
 @login_required
 def board_list(request):

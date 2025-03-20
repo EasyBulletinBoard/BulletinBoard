@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Willkommen!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
+</head>
+<body>
+    <h1>Willkommen auf meiner Pinnwand-App!</h1>
+
+    {% if user.is_authenticated %}
+        <p>Du bist bereits eingeloggt.</p>
+        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+    {% else %}
+        <p>Bitte melde dich an oder registriere dich.</p>
+        <a href="{% url 'login' %}">Einloggen</a>
+        <a href="{% url 'signup' %}">Registrieren</a>
+    {% endif %}
+
+</body>
+</html>
