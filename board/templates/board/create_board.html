@@ -1,7 +1,18 @@
-<h1>Neues Board erstellen</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Erstellen</button>
-</form>
-<a href="{% url 'board_list' %}">Zurück</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load i18n %}
+</head>
+<body>
+    <h1>{% trans "Create new board" %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Erstellen</button>
+    </form>
+    <a href="{% url 'board_list' %}">Zurück</a>
+</body>
+</html>
