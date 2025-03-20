@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/global.css'%}">
 <h1>Neuer Beitrag für {{ board.name }}</h1>
 <form method="post">
     {% csrf_token %}
