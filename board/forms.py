@@ -10,7 +10,7 @@ class BoardForm(forms.ModelForm):
 class CardForm(forms.ModelForm):
     class Meta:
         model = Card
-        fields = ['title', 'content']
+        fields = ['title', 'content', "attachment"]
 
 class AddMemberForm(forms.Form):
     username = forms.CharField(max_length=150)

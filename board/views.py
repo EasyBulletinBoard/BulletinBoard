@@ -44,7 +44,7 @@ def create_card(request, board_id):
         return redirect("board_list")
 
     if request.method == "POST":
-        form = CardForm(request.POST)
+        form = CardForm(request.POST, request.FILES)
         if form.is_valid():
             card = form.save(commit=False)
             card.board = board
