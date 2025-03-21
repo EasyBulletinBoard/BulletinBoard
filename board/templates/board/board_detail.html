@@ -41,7 +41,13 @@
             <div class="card">
                 <strong>{{ card.title }}</strong> von {{ card.author }} am {{ card.created_at }}<br>
                 <p>{{ card.content }}</p>
-            </div>
+
+                {% if card.attachment %}
+                    <img style="aspect-ratio: 4/3; width: 30%;" src="/media/{{card.attachment}}">
+                {% else %}
+                {% endif %}
+
+            </div>        
         {% endfor %}
     </ul>
 

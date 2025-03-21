@@ -15,6 +15,7 @@ class Card(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    attachment = models.ImageField(upload_to="cards/", null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} - {self.author}"
