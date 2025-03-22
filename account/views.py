@@ -5,6 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 
+def konto(request):
+    return render(request, "account.html")
+
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)

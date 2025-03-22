@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Mein Konto
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
+</head>
+<body>
+    <h1>Willkommen auf deiner Kontoseite!</h1>
+    <p>Hier sind deine Optionen:</p>
+    <ul>
+        <li><a href="{% url 'signup' %}">Registrieren</a></li>
+        <li><a href="{% url 'login' %}">Anmelden</a></li>
+        <li><a href="{% url 'logout' %}">Abmelden</a></li>
+    </ul>
+</body>
+</html>
