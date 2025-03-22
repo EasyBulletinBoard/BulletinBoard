@@ -4,7 +4,7 @@
 Easy BulletinBoard is an easy self-hosted bulletin board. It can be easily installed and can be used for e.g. announcements, important notes, and other things :)
 
 ## Installation & Hosting
-See [installation guide](https://linktodocumentation)
+See [installation guide](/docs/installation.md)
 
 ## Documentation
 [Documentation](https://linktodocumentation)
