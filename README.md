@@ -12,6 +12,14 @@ See [installation guide](/docs/installation.md)
 ## Contribution
 Every contribution is welcome!! See [Contribution note](/docs/contribution.md)
 
+## Development
+Develop like normal django project
+```bash
+  pip install -r requirements.txt
+  python manage.py migrate
+  python manage.py runserver 0.0.0.0:8000
+```
+
 ## Security Disclaimer
 We do not recommend hosting it publicly, as no special security measures have been taken at this time.
 
