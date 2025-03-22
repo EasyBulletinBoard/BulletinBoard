@@ -14,3 +14,8 @@ Every contribution is welcome!! See [Contribution note](/docs/contribution.md)
 
 ## Security Disclaimer
 We do not recommend hosting it publicly, as no special security measures have been taken at this time.
+
+
+## Features
+- creating boards
+- creating posts on boards
