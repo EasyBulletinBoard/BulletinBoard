@@ -9,11 +9,16 @@
 </head>
 <body>
     <h1>Willkommen auf deiner Kontoseite!</h1>
-    <p>Hier sind deine Optionen:</p>
-    <ul>
-        <li><a href="{% url 'signup' %}">Registrieren</a></li>
-        <li><a href="{% url 'login' %}">Anmelden</a></li>
-        <li><a href="{% url 'logout' %}">Abmelden</a></li>
-    </ul>
+    {% if user.is_authenticated %}
+        <p>Du bist bereits eingeloggt.</p>
+        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+    {% else %}
+        <p>Hier sind deine Optionen:</p>
+        <ul>
+            <li><a href="{% url 'signup' %}">Registrieren</a></li>
+            <li><a href="{% url 'login' %}">Anmelden</a></li>
+            <li><a href="{% url 'logout' %}">Abmelden</a></li>
+        </ul>
+    {% endif %}
 </body>
 </html>
