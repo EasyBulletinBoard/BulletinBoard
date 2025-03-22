@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css' %}">
 </head>
 <body>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css'%}">
-    <h1>Registrieren</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrieren</button>
-    </form>
-    <a href="{% url 'login' %}">Schon ein Konto? Login</a>
+    {% if user.is_authenticated %}
+        <p>Du bist bereits eingeloggt.</p>
+        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+        <script>
+            window.location.href = "{% url 'board_list' %}"; // Direkte Weiterleitung
+        </script>
+    {% else %}
+        <h1>Registrieren</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrieren</button>
+        </form>
+        <a href="{% url 'login' %}">Schon ein Konto? Login</a>
+    {% endif %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const usernameField = document.querySelector('input[name="username"]');
+            if (usernameField) {
+                usernameField.addEventListener('input', function () {
+                    this.value = this.value.toLowerCase();
+                });
+            }
+        });
+    </script>
 </body>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const usernameField = document.querySelector('input[name="username"]');
-        if (usernameField) {
-            usernameField.addEventListener('input', function () {
-                this.value = this.value.toLowerCase();
-            });
-        }
-    });
-</script>
-
 </html>

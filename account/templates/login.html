@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css' %}">
 </head>
 <body>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css'%}">
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Einloggen</button>
-    </form>
-    <a href="{% url 'signup' %}">Registrieren</a>
+    {% if user.is_authenticated %}
+        <p>Du bist bereits eingeloggt.</p>
+        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+        <script>
+            window.location.href = "{% url 'board_list' %}"; // Direkte Weiterleitung
+        </script>
+    {% else %}
+        <p>Bitte melde dich an oder registriere dich.</p>
+        <a href="{% url 'signup' %}">Registrieren</a>
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Einloggen</button>
+        </form>
+        <a href="{% url 'signup' %}">Registrieren</a>
+    {% endif %}
 </body>
 </html>
