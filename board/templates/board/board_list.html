@@ -9,11 +9,15 @@
 </head>
 <body>
     <h1>Deine Boards</h1>
-    <ul>
+    <div style="flex-direction: row; display: flex; flex-wrap: wrap;">
         {% for board in boards %}
-            <li><a href="{% url 'board_detail' board.id %}">{{ board.name }}</a></li>
+            <a style="text-decoration: none;" href="{% url 'board_detail' board.id %}">
+                <div style="background-color: lightblue; width: 18vw; margin: 15px; aspect-ratio: 6/3; padding: 10px; border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-direction: row;">    
+                    <span style="font-size: 2rem; color: black">{{ board.name }}</span>
+                </div>
+            </a>
         {% endfor %}
-    </ul>
-    <a href="{% url 'create_board' %}">Neues Board erstellen</a>
+    </div>
+    <a style="text-decoration: none" href="{% url 'create_board' %}">Neues Board erstellen</a>
 </body>
 </html>
