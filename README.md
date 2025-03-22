@@ -7,10 +7,10 @@ Easy BulletinBoard is an easy self-hosted bulletin board. It can be easily insta
 See [installation guide](/docs/installation.md)
 
 ## Documentation
-[Documentation](https://linktodocumentation)
+[Documentation](/docs)
 
 ## Contribution
-Every contribution is welcome!! See [Contribution note](https://linktodocumentation)
+Every contribution is welcome!! See [Contribution note](/docs/contribution.md)
 
 ## Security Disclaimer
 We do not recommend hosting it publicly, as no special security measures have been taken at this time.
