@@ -7,7 +7,8 @@
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
-<body>
+<body class="light-mode">
+    <button id="theme-toggle">Dark Mode</button>
     <h1>Neuer Beitrag für {{ board.name }}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -15,5 +16,6 @@
         <button type="submit">Erstellen</button>
     </form>
     <a href="{% url 'board_detail' board.id %}">Zurück</a>
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>
