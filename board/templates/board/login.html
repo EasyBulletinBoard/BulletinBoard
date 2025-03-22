@@ -1,9 +1,0 @@
-{% load static %}
-<link rel="stylesheet" href="{% static '/css/global.css'%}">
-<h1>Login</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Einloggen</button>
-</form>
-<a href="{% url 'signup' %}">Registrieren</a>

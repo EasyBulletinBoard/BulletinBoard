@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
+    <h1>Registrieren</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrieren</button>
+    </form>
+    <a href="{% url 'login' %}">Schon ein Konto? Login</a>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const usernameField = document.querySelector('input[name="username"]');
+        if (usernameField) {
+            usernameField.addEventListener('input', function () {
+                this.value = this.value.toLowerCase();
+            });
+        }
+    });
+</script>
+
+</html>
