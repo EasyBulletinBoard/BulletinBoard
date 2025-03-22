@@ -51,11 +51,13 @@
         {% endfor %}
     </ul>
 
-    <button style="background-color: blue; padding: 10px 15px; border-width: 0px; border-radius: 12px;">
-        <a href="{% url 'create_card' board.id %}">
-            <span style="font-size: larger;">Neuen Beitrag erstellen</span>
-        </a>
-    </button>
+    <div style="position: fixed; bottom: 5vh; width: 100%; text-align: center">
+        <button style="background-color: blue; padding: 15px 25px; border-width: 0px; border-radius: 20px;">
+            <a href="{% url 'create_card' board.id %}" style="color: white; text-decoration: none;">
+                <span style="font-size: 1rem;">Neuen Beitrag erstellen</span>
+            </a>
+        </button>
+    </div>
     
 </body>
 </html>
