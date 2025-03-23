@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('theme-toggle');
     let currentTheme = localStorage.getItem('theme') || 'light-mode';
+    console.debug(currentTheme);
     document.body.className = currentTheme;
     updateButtonText();
     toggleButton.addEventListener('click', function() {
