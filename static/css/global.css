@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
 body.light-mode {
     background-color: #ffffff;
     color: #333333;
-=======
-html {
-    font-family: Arial, Helvetica, sans-serif;
->>>>>>> Stashed changes
 }
 body.dark-mode {
     background-color: #1a1a1a;
