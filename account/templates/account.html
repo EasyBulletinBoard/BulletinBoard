@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>
-        Mein Konto
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Konto</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
-<body>
+<body class="light-mode">
+    <button id="theme-toggle">Dark Mode</button>
     <h1>Willkommen auf deiner Kontoseite!</h1>
     {% if user.is_authenticated %}
         <p>Du bist bereits eingeloggt.</p>
@@ -20,5 +21,6 @@
             <li><a href="{% url 'logout' %}">Abmelden</a></li>
         </ul>
     {% endif %}
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

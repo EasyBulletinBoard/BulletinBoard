@@ -8,3 +8,6 @@
         LorenzCoder"
     If else Abfragen in entsprechenden Templates, um unnötige Logins etc zu verhindern.
     LorenzCoder
+22.03.2025, 18:40:
+    Umschaltmöglichkeit Dark/Lightmode hinzugefügt
+    LorenzCoder

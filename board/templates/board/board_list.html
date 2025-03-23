@@ -7,7 +7,8 @@
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
-<body>
+<body class="light-mode">
+    <button id="theme-toggle">Dark Mode</button>
     <h1>Deine Boards</h1>
     <div style="flex-direction: row; display: flex; flex-wrap: wrap;">
         {% for board in boards %}
@@ -19,5 +20,6 @@
         {% endfor %}
     </div>
     <a style="text-decoration: none" href="{% url 'create_board' %}">Neues Board erstellen</a>
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

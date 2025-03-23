@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Willkommen!</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
-<body>
+<body class="light-mode">
+    <button id="theme-toggle">Dark Mode</button>
     <h1>Willkommen auf meiner Pinnwand-App!</h1>
-
     {% if user.is_authenticated %}
         <p>Du bist bereits eingeloggt.</p>
         <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
@@ -16,6 +18,6 @@
         <a href="{% url 'login' %}">Einloggen</a>
         <a href="{% url 'signup' %}">Registrieren</a>
     {% endif %}
-
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

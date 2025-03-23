@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Board</title>
-    {% load i18n %}
-  {% load static %}
-<link rel="stylesheet" href="{% static '/css/global.css'%}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
-<body>
+<body class="light-mode">
+    <button id="theme-toggle">Dark Mode</button>
     <h1>{% trans "Create new board" %}</h1>
     <form method="post">
         {% csrf_token %}
@@ -16,5 +16,6 @@
         <button type="submit">Erstellen</button>
     </form>
     <a href="{% url 'board_list' %}">Zurück</a>
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>

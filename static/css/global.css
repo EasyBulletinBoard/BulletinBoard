@@ -1,9 +1,29 @@
-
+<<<<<<< Updated upstream
+body.light-mode {
+    background-color: #ffffff;
+    color: #333333;
+=======
 html {
     font-family: Arial, Helvetica, sans-serif;
+>>>>>>> Stashed changes
 }
-
-a {
-    text-decoration: none;
-    background-color: red;
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 1000;
+}
+body.dark-mode .card {
+    border-color: #666;
+    background-color: #2a2a2a;
+}
+body.dark-mode a {
+    color: #9ec3ff;
 }
