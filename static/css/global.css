@@ -1,24 +1,96 @@
 body.light-mode {
-    background-color: #ffffff;
-    color: #333333;
+    background-color: "#eaeaea";
+    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.5s ease, color 0.5s ease;
 }
+
 body.dark-mode {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: black !important;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    transition: background 0.5s ease, color 0.5s ease;
 }
+
 #theme-toggle {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 24px;
+    border-radius: 30px;
     cursor: pointer;
     z-index: 1000;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
+
+#theme-toggle:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 body.dark-mode .card {
-    border-color: #666;
-    background-color: #2a2a2a;
+    background-color: #3b3b3b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
 body.dark-mode a {
     color: #9ec3ff;
+}
+
+button, .button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode button, body.dark-mode .button {
+    background-color: #1abc9c;
+}
+
+body.dark-mode button:hover, body.dark-mode .button:hover {
+    background-color: #16a085;
 }
