@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Willkommen!</title>
+    <title>Welcome!</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css'%}">
+    <link rel="stylesheet" href="{% static '/css/global.css' %}">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body class="light-mode">
-    <button id="theme-toggle">Dark Mode</button>
-    <h1>Willkommen auf meiner Pinnwand-App!</h1>
-    {% if user.is_authenticated %}
-        <p>Du bist bereits eingeloggt.</p>
-        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
-    {% else %}
-        <p>Bitte melde dich an oder registriere dich.</p>
-        <a href="{% url 'login' %}">Einloggen</a>
-        <a href="{% url 'signup' %}">Registrieren</a>
-    {% endif %}
+    <button id="theme-toggle">🌙 Dark Mode</button>
+    <div class="container">
+        <h1>Welcome to the Bulletin Board App!</h1>
+        {% if user.is_authenticated %}
+            <p>You are already logged in.</p>
+            <a href="{% url 'board_list' %}" class="button">Go to My Boards</a>
+        {% else %}
+            <p>Please log in or register to get started.</p>
+            <div class="button-group">
+                <a href="{% url 'login' %}" class="button">Login</a>
+                <a href="{% url 'signup' %}" class="button">Register</a>
+            </div>
+        {% endif %}
+    </div>
     <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>
 </html>
