@@ -1,59 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ board.name }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css'%}">
-    <style>
-        .card {
-            border-width: 2px;
-            border-style: dashed;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 12px;
-            display: inline-block;
-            width: auto;
-        }
-        .card img {
-            aspect-ratio: 4/3;
-            width: 30%;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body class="light-mode">
-    <button id="theme-toggle">🌙 Dark Mode</button>
-    <h1>{{ board.name }}</h1>
-    <div style="margin-bottom: 20px;">
-        <a href="{% url 'board_list' %}" style="margin-right: 15px;">← Zurück</a>
-        <a href="{% url 'add_member' board.id %}">➕ Mitglied hinzufügen</a>
-    </div>
-    <h2>Beiträge</h2>
-    <ul style="list-style: none; padding: 0;">
-        {% for card in cards %}
-            <div class="card">
-                <strong>{{ card.title }}</strong><br>
-                <small>von {{ card.author }} am {{ card.created_at }}</small>
-                <p>{{ card.content }}</p>
-                {% if card.attachment %}
-                    <img src="/media/{{ card.attachment }}" alt="Anhang">
-                {% endif %}
-            </div>
-        {% endfor %}
-    </ul>
-    <div style="position: fixed; bottom: 5vh; width: 100%; text-align: center;">
-        <a href="{% url 'create_card' board.id %}" 
-           style="display: inline-block; 
-                  background-color: blue; 
-                  color: white; 
-                  padding: 15px 25px; 
-                  border-radius: 20px; 
-                  text-decoration: none;">
-            Neuen Beitrag erstellen
-        </a>
-    </div>
-    <script src="{% static 'js/theme-toggle.js' %}"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}{{ board.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ board.name }}</h1>
+<div style="margin-bottom: 20px;">
+    <a href="{% url 'board_list' %}" style="margin-right: 15px;">← Zurück</a>
+    <a href="{% url 'add_member' board.id %}">➕ Mitglied hinzufügen</a>
+</div>
+<h2>Beiträge</h2>
+<ul style="list-style: none; padding: 0;">
+    {% for card in cards %}
+        <div class="card">
+            <strong>{{ card.title }}</strong><br>
+            <small>von {{ card.author }} am {{ card.created_at }}</small>
+            <p>{{ card.content }}</p>
+            {% if card.attachment %}
+                <img src="/media/{{ card.attachment }}" alt="Anhang">
+            {% endif %}
+        </div>
+    {% endfor %}
+</ul>
+<div style="position: fixed; bottom: 5vh; width: 100%; text-align: center;">
+    <a href="{% url 'create_card' board.id %}" 
+       style="display: inline-block; 
+              background-color: blue; 
+              color: white; 
+              padding: 15px 25px; 
+              border-radius: 20px; 
+              text-decoration: none;">
+        Neuen Beitrag erstellen
+    </a>
+</div>
+{% endblock %}

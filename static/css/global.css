@@ -12,17 +12,37 @@ body.dark-mode {
     transition: background 0.5s ease, color 0.5s ease;
 }
 
-#theme-toggle {
+.header-bar {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 20px;  
+    gap: 5px
+}
+
+.settings-btn {
     padding: 12px 24px;
-    border-radius: 30px;
     cursor: pointer;
     z-index: 1000;
     background-color: #3498db;
     color: white;
     border: none;
+    border-radius: 99999;
+    aspect-ratio: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.profile-icon {
+    padding: 12px 24px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 99999;
+    aspect-ratio: 1;
     font-size: 1rem;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Card</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css'%}">
-</head>
-<body class="light-mode">
-    <button id="theme-toggle">Dark Mode</button>
+
+{% extends "base.html" %}
+
+{% block title %}Create Card{% endblock %}
+
+{% block content %}
     <h1>Neuer Beitrag für {{ board.name }}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -16,6 +11,4 @@
         <button type="submit">Erstellen</button>
     </form>
     <a href="{% url 'board_detail' board.id %}">Zurück</a>
-    <script src="{% static 'js/theme-toggle.js' %}"></script>
-</body>
-</html>
+{% endblock %}

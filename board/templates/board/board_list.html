@@ -1,63 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Boards</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css' %}">
-    <style>
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .board-card {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 1.2rem;
-            color: #2c3e50;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .board-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .create-board {
-            display: inline-block;
-            margin: 20px auto;
-            padding: 12px 24px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
-        .create-board:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body class="light-mode">
-    <button id="theme-toggle">🌙 Dark Mode</button>
-    <h1>Your Boards</h1>
-    <div class="grid">
-        {% for board in boards %}
-            <a href="{% url 'board_detail' board.id %}" class="board-card">
-                {{ board.name }}
-            </a>
-        {% endfor %}
-    </div>
-    <a href="{% url 'create_board' %}" class="create-board">Create New Board</a>
-    <script src="{% static 'js/theme-toggle.js' %}"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Your Boards{% endblock %}
+
+{% block content %}
+<h1>Your Boards</h1>
+<div class="grid">
+    {% for board in boards %}
+        <a href="{% url 'board_detail' board.id %}" class="board-card">
+            {{ board.name }}
+        </a>
+    {% endfor %}
+</div>
+<a href="{% url 'create_board' %}" class="create-board">Create New Board</a>
+{% endblock %}
