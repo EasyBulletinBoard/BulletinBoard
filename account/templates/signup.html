@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/css/global.css' %}">
-</head>
-<body class="light-mode">
-    <button id="theme-toggle">Dark Mode</button>
-    {% if user.is_authenticated %}
-        <p>Du bist bereits eingeloggt.</p>
-        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
-        <script>
-            window.location.href = "{% url 'board_list' %}";
-        </script>
-    {% else %}
-        <h1>Registrieren</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Registrieren</button>
-        </form>
-        <a href="{% url 'login' %}">Schon ein Konto? Login</a>
-    {% endif %}
-    <script src="{% static 'js/theme-toggle.js' %}"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <p>Du bist bereits eingeloggt.</p>
+    <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+    <script>
+        window.location.href = "{% url 'board_list' %}";
+    </script>
+{% else %}
+    <h1>Registrieren</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrieren</button>
+    </form>
+    <a href="{% url 'login' %}">Schon ein Konto? Login</a>
+{% endif %}
+
+{% endblock %}

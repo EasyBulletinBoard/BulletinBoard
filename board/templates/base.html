@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% load i18n %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% trans "Bulletin Board" %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/global.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="light-mode">
+    <div class="header-bar" style="display: flex; flex-direction: row; align-items: center;">
+        <button class="bar-icon" id="settings_btn">
+            <img src="{% static 'icons/settings.svg' %}" alt="Settings" class="settings-icon">
+        </button>
+        <button class="bar-icon">
+            <img src="{% static 'icons/user.svg' %}" alt="Settings">
+        </button>
+    </div>
+    <button id="theme-toggle">{% trans "Dark Mode" %}</button>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
+    <script src="{% static 'js/settings.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

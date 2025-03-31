@@ -82,3 +82,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'board/signup.html', {'form': form})
+
+
+def settings(request):
+    return render(request, 'settings.html')
