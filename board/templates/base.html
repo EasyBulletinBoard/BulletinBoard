@@ -11,8 +11,12 @@
 </head>
 <body class="light-mode">
     <div class="header-bar" style="display: flex; flex-direction: row; align-items: center;">
-        <button class="settings-btn">S</button>
-        <button class="profile-icon">P</button>
+        <button class="bar-icon" id="settings_btn">
+            <img src="{% static 'icons/settings.svg' %}" alt="Settings" class="settings-icon">
+        </button>
+        <button class="bar-icon">
+            <img src="{% static 'icons/user.svg' %}" alt="Settings">
+        </button>
     </div>
     <button id="theme-toggle">{% trans "Dark Mode" %}</button>
     <div class="container">
