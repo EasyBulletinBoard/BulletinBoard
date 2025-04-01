@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
 {% block title %}Welcome!{% endblock %}
 {% block content %}
     <h1>Settings</h1>
@@ -7,4 +8,5 @@
     <br>
     <br>
     <a href="/"><button>Zur Startseite</button></a> 
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
 {% endblock %}

@@ -3,27 +3,22 @@
 {% block title %}{{ board.name }}{% endblock %}
 
 {% block content %}
-<h1>{{ board.name }}
-    <button id="like-button" data-board-id="{{ board.id }}" style="margin-left: 10px;">
-        {% if request.user in board.liked_by.all %}
-            Unlike
-        {% else %}
-            Like
-        {% endif %}
-    </button>
-    <span id="likes-count">Likes: {{ board.likes }}</span>
-</h1>
-
-<div style="margin-bottom: 20px;">
-    <a href="{% url 'board_list' %}" style="margin-right: 15px;">← Zurück</a>
-    <a href="{% url 'add_member' board.id %}">➕ Mitglied hinzufügen</a>
-</div>
+<h1>{{ board.name }}</h1>
 
 <h2>Beiträge</h2>
 <ul style="list-style: none; padding: 0;">
     {% for card in cards %}
         <div class="card">
-            <strong>{{ card.title }}</strong><br>
+            <strong>{{ card.title }}</strong>
+            <button class="like-card-button" data-card-id="{{ card.id }}">
+                {% if request.user in card.liked_by.all %}
+                    Unlike
+                {% else %}
+                    Like
+                {% endif %}
+            </button>
+            <span class="likes-count" data-card-id="{{ card.id }}">Likes: {{ card.likes }}</span>
+            <br>
             <small>von {{ card.author }} am {{ card.created_at }}</small>
             <p>{{ card.content }}</p>
             {% if card.attachment %}
@@ -33,39 +28,25 @@
     {% endfor %}
 </ul>
 
-<div style="position: fixed; bottom: 5vh; width: 100%; text-align: center;">
-    <a href="{% url 'create_card' board.id %}" 
-       style="display: inline-block; 
-              background-color: blue; 
-              color: white; 
-              padding: 15px 25px; 
-              border-radius: 20px; 
-              text-decoration: none;">
-        Neuen Beitrag erstellen
-    </a>
-</div>
-
 <script>
-    document.getElementById('like-button').addEventListener('click', function() {
-        const boardId = this.getAttribute('data-board-id');
-        const url = "{% url 'like_board' board.id %}";
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}',
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('likes-count').textContent = 'Likes: ' + data.likes;
-            if (data.liked) {
-                document.getElementById('like-button').textContent = 'Unlike';
-            } else {
-                document.getElementById('like-button').textContent = 'Like';
-            }
+    document.querySelectorAll('.like-card-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const cardId = this.getAttribute('data-card-id');
+            console.log(cardId);
+            fetch(`/cards/${cardId}/like/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector(`.likes-count[data-card-id="${cardId}"]`).textContent = 'Likes: ' + data.likes;
+                this.textContent = this.textContent === 'Like' ? 'Unlike' : 'Like';
+            });
         });
     });
 </script>
 
-{% endblock %}
+{% endblock %}  
