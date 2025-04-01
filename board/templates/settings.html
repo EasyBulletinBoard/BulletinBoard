@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Welcome!{% endblock %}
-
 {% block content %}
     <h1>Settings</h1>
-    
+    <button id="theme-toggle">{% trans "Dark Mode" %}</button>
+    <br>
+    <br>
+    <a href="/"><button>Zur Startseite</button></a> 
 {% endblock %}
