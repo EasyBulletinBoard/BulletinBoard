@@ -5,7 +5,9 @@ class Board(models.Model):
     name = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name="boards", blank=True)
-
+    likes = models.PositiveIntegerField(default=0)
+    liked_by = models.ManyToManyField(User, related_name="liked_boards", blank=True)
+    
     def __str__(self):
         return self.name
 

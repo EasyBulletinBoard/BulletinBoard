@@ -6,3 +6,4 @@
 *.pyc
 __pycache__
 media
+board/migrations/*
