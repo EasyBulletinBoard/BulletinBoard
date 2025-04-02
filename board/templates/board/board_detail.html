@@ -12,9 +12,9 @@
             <strong>{{ card.title }}</strong>
             <button class="like-card-button" data-card-id="{{ card.id }}">
                 {% if request.user in card.liked_by.all %}
-                    Unlike
+                    👎
                 {% else %}
-                    Like
+                    👍
                 {% endif %}
             </button>
             <span class="likes-count" data-card-id="{{ card.id }}">Likes: {{ card.likes }}</span>
@@ -33,7 +33,7 @@
         button.addEventListener('click', function() {
             const cardId = this.getAttribute('data-card-id');
             console.log(cardId);
-            fetch(`/cards/${cardId}/like/`, {
+            fetch(`/boards/cards/${cardId}/like/`, {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': '{{ csrf_token }}',
@@ -43,7 +43,7 @@
             .then(response => response.json())
             .then(data => {
                 document.querySelector(`.likes-count[data-card-id="${cardId}"]`).textContent = 'Likes: ' + data.likes;
-                this.textContent = this.textContent === 'Like' ? 'Unlike' : 'Like';
+                this.textContent = this.textContent === '👍' ? '👎' : '👍';
             });
         });
     });
