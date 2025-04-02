@@ -5,7 +5,8 @@ from .forms import BoardForm, CardForm, AddMemberForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 def home(request):
     return render(request, "board/home.html")
@@ -71,7 +72,6 @@ def add_member(request, board_id):
     
     return render(request, "board/add_member.html", {"form": form, "board": board})
 
-
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -83,6 +83,19 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'board/signup.html', {'form': form})
 
-
 def settings(request):
     return render(request, 'settings.html')
+
+@login_required
+@require_POST
+def like_card(request, card_id):
+    card = get_object_or_404(Card, id=card_id)
+
+    if request.user in card.liked_by.all():
+        card.likes -= 1
+        card.liked_by.remove(request.user)
+    else:
+        card.likes += 1
+        card.liked_by.add(request.user)
+    card.save()
+    return JsonResponse({'likes': card.likes})
