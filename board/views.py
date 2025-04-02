@@ -90,6 +90,7 @@ def settings(request):
 @require_POST
 def like_card(request, card_id):
     card = get_object_or_404(Card, id=card_id)
+    print("die card", card)
 
     if request.user in card.liked_by.all():
         card.likes -= 1
