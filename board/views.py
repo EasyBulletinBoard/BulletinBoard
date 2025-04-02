@@ -9,6 +9,8 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
 def home(request):
+    if request.user.is_authenticated:
+        return redirect('board_list')  # Weiterleitung zu /boards/
     return render(request, "board/home.html")
 
 @login_required
