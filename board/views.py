@@ -8,7 +8,6 @@ from django.contrib.auth import login
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
-
 def home(request):
     return render(request, "board/home.html")
 
@@ -73,21 +72,6 @@ def add_member(request, board_id):
     
     return render(request, "board/add_member.html", {"form": form, "board": board})
 
-@login_required
-@require_POST
-def like_board(request, board_id):
-    board = get_object_or_404(Board, id=board_id)
-    if request.user in board.liked_by.all():
-        board.likes -= 1
-        board.liked_by.remove(request.user) # Entferne den Benutzer von den gelikten Benutzern
-        board.save()
-        return JsonResponse({'likes': board.likes, 'liked': False}) # Gib 'liked: False' zurück
-    else:
-        board.likes += 1
-        board.liked_by.add(request.user) # Füge den Benutzer zu den gelikten Benutzern hinzu
-        board.save()
-        return JsonResponse({'likes': board.likes, 'liked': True})
-
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -99,6 +83,20 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'board/signup.html', {'form': form})
 
-
 def settings(request):
     return render(request, 'settings.html')
+
+@login_required
+@require_POST
+def like_card(request, card_id):
+    card = get_object_or_404(Card, id=card_id)
+    print("die card", card)
+
+    if request.user in card.liked_by.all():
+        card.likes -= 1
+        card.liked_by.remove(request.user)
+    else:
+        card.likes += 1
+        card.liked_by.add(request.user)
+    card.save()
+    return JsonResponse({'likes': card.likes})
