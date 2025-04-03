@@ -1,24 +1,25 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Konto</title>
+    <title>{% trans "Mein Konto" %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css'%}">
 </head>
 <body class="light-mode">
-    <button id="theme-toggle">Dark Mode</button>
-    <h1>Willkommen auf deiner Kontoseite!</h1>
+    <button id="theme-toggle">{% trans "Dark Mode" %}</button>
+    <h1>{% trans "Willkommen auf deiner Kontoseite!" %}</h1>
     {% if user.is_authenticated %}
-        <p>Du bist bereits eingeloggt.</p>
-        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+        <p>{% trans "Du bist bereits eingeloggt." %}</p>
+        <a href="{% url 'board_list' %}">{% trans "Zu meinen Pinnwänden" %}</a>
     {% else %}
-        <p>Hier sind deine Optionen:</p>
+        <p>{% trans "Hier sind deine Optionen:" %}</p>
         <ul>
-            <li><a href="{% url 'signup' %}">Registrieren</a></li>
-            <li><a href="{% url 'login' %}">Anmelden</a></li>
-            <li><a href="{% url 'logout' %}">Abmelden</a></li>
+            <li><a href="{% url 'signup' %}">{% trans "Registrieren" %}</a></li>
+            <li><a href="{% url 'login' %}">{% trans "Anmelden" %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans "Abmelden" %}</a></li>
         </ul>
     {% endif %}
     <script src="{% static 'js/theme-toggle.js' %}"></script>

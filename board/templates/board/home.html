@@ -1,17 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Welcome!{% endblock %}
+{% block title %}{% trans "Welcome!" %}{% endblock %}
 
 {% block content %}
-<h1>Welcome to the Bulletin Board App!</h1>
+<h1>{% trans "Welcome to the Bulletin Board App!" %}</h1>
 {% if user.is_authenticated %}
-    <p>You are already logged in.</p>
-    <a href="{% url 'board_list' %}" class="button">Go to My Boards</a>
+    <p>{% trans "You are already logged in." %}</p>
 {% else %}
-    <p>Please log in or register to get started.</p>
+    <p>{% trans "Please log in or register to get started." %}</p>
     <div class="button-group">
-        <a href="{% url 'login' %}" class="button">Login</a>
-        <a href="{% url 'signup' %}" class="button">Register</a>
+        <a href="{% url 'login' %}" class="button">{% trans "Login" %}</a>
+        <a href="{% url 'signup' %}" class="button">{% trans "Register" %}</a>
     </div>
 {% endif %}
 {% endblock %}

@@ -1,28 +1,29 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{% trans "Login" %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/global.css' %}">
 </head>
 <body class="light-mode">
-    <button id="theme-toggle">Dark Mode</button>
+    <button id="theme-toggle">{% trans "Dark Mode" %}</button>
     {% if user.is_authenticated %}
-        <p>Du bist bereits eingeloggt.</p>
-        <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+        <p>{% trans "Du bist bereits eingeloggt." %}</p>
+        <a href="{% url 'board_list' %}">{% trans "Zu meinen Pinnwänden" %}</a>
         <script>
             window.location.href = "{% url 'board_list' %}";
         </script>
     {% else %}
-        <h1>Login</h1>
+        <h1>{% trans "Login" %}</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Einloggen</button>
+            <button type="submit">{% trans "Einloggen" %}</button>
         </form>
-        <a href="{% url 'signup' %}">Noch kein Konto? Registrieren</a>
+        <a href="{% url 'signup' %}">{% trans "Noch kein Konto? Registrieren" %}</a>
     {% endif %}
     <script src="{% static 'js/theme-toggle.js' %}"></script>
 </body>

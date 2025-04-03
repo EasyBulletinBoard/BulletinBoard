@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load i18n %}  <!-- i18n-Tag hinzugefügt -->
 
 {% block title %}{{ board.name }}{% endblock %}
 
 {% block content %}
 <h1>{{ board.name }}</h1>
 
-<h2>Beiträge</h2>
+<h2>{% trans "Beiträge" %}</h2>  <!-- Statischer Text übersetzt -->
 <ul style="list-style: none; padding: 0;">
     {% for card in cards %}
         <div class="card">
@@ -17,12 +18,18 @@
                     👍
                 {% endif %}
             </button>
-            <span class="likes-count" data-card-id="{{ card.id }}">Likes: {{ card.likes }}</span>
+            <span class="likes-count" data-card-id="{{ card.id }}" data-likes-text="{% trans 'Likes: ' %}">  <!-- Übersetzter Text als Data-Attribut -->
+                {% blocktrans count likes=card.likes %}1 Like{% plural %}{{ likes }} Likes{% endblocktrans %}  <!-- Plural-Form für Likes -->
+            </span>
             <br>
-            <small>von {{ card.author }} am {{ card.created_at }}</small>
+            <small>
+                {% blocktrans with author=card.author|safe date=card.created_at|date:"SHORT_DATE_FORMAT" %}  <!-- Variablen mit Filter -->
+                    von {{ author }} am {{ date }}
+                {% endblocktrans %}
+            </small>
             <p>{{ card.content }}</p>
             {% if card.attachment %}
-                <img src="/media/{{ card.attachment }}" alt="Anhang">
+                <img src="/media/{{ card.attachment }}" alt="{% trans 'Anhang' %}">  <!-- Alt-Text übersetzt -->
             {% endif %}
         </div>
     {% endfor %}
@@ -32,7 +39,9 @@
     document.querySelectorAll('.like-card-button').forEach(button => {
         button.addEventListener('click', function() {
             const cardId = this.getAttribute('data-card-id');
-            console.log(cardId);
+            const likesElement = document.querySelector(`.likes-count[data-card-id="${cardId}"]`);
+            const likesText = likesElement.getAttribute('data-likes-text');  <!-- Übersetzten Text aus Data-Attribut holen -->
+
             fetch(`/boards/cards/${cardId}/like/`, {
                 method: 'POST',
                 headers: {
@@ -42,11 +51,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.querySelector(`.likes-count[data-card-id="${cardId}"]`).textContent = 'Likes: ' + data.likes;
+                likesElement.textContent = likesText + data.likes;
                 this.textContent = this.textContent === '👍' ? '👎' : '👍';
             });
         });
     });
 </script>
-
-{% endblock %}  
+{% endblock %}
