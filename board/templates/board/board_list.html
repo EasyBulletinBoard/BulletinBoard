@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Your Boards{% endblock %}
+{% block title %}{% trans "Your Boards" %}{% endblock %}
 
 {% block content %}
-<h1>Your Boards</h1>
+<h1>{% trans "Your Boards" %}</h1>
 <div class="grid">
     {% for board in boards %}
         <a href="{% url 'board_detail' board.id %}" class="board-card">
@@ -11,5 +12,5 @@
         </a>
     {% endfor %}
 </div>
-<a href="{% url 'create_board' %}" class="create-board">Create New Board</a>
+<a href="{% url 'create_board' %}" class="create-board">{% trans "Create New Board" %}</a>
 {% endblock %}

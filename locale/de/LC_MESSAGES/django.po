@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 12:52+0000\n"
+"POT-Creation-Date: 2025-04-02 21:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,190 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: board/templates/board/create_board.html:10
+#: .\account\templates\account.html:7
+msgid "Mein Konto"
+msgstr ""
+
+#: .\account\templates\account.html:12 .\account\templates\login.html:12
+#: .\board\templates\settings.html:7
+msgid "Dark Mode"
+msgstr ""
+
+#: .\account\templates\account.html:13
+msgid "Willkommen auf deiner Kontoseite!"
+msgstr ""
+
+#: .\account\templates\account.html:15 .\account\templates\login.html:14
+#: .\account\templates\signup.html:8
+msgid "Du bist bereits eingeloggt."
+msgstr ""
+
+#: .\account\templates\account.html:16 .\account\templates\login.html:15
+#: .\account\templates\signup.html:9
+msgid "Zu meinen Pinnwänden"
+msgstr ""
+
+#: .\account\templates\account.html:18
+msgid "Hier sind deine Optionen:"
+msgstr ""
+
+#: .\account\templates\account.html:20 .\account\templates\signup.html:14
+#: .\account\templates\signup.html:18
+msgid "Registrieren"
+msgstr ""
+
+#: .\account\templates\account.html:21
+msgid "Anmelden"
+msgstr ""
+
+#: .\account\templates\account.html:22
+msgid "Abmelden"
+msgstr ""
+
+#: .\account\templates\login.html:7 .\account\templates\login.html:20
+#: .\board\templates\board\home.html:13
+msgid "Login"
+msgstr ""
+
+#: .\account\templates\login.html:24
+msgid "Einloggen"
+msgstr ""
+
+#: .\account\templates\login.html:26
+msgid "Noch kein Konto? Registrieren"
+msgstr ""
+
+#: .\account\templates\signup.html:4
+msgid "Signup"
+msgstr ""
+
+#: .\account\templates\signup.html:20
+msgid "Schon ein Konto? Login"
+msgstr ""
+
+#: .\board\templates\base.html:8
+msgid "Bulletin Board"
+msgstr ""
+
+#: .\board\templates\board\add_member.html:4
+msgid "Add member"
+msgstr ""
+
+#: .\board\templates\board\add_member.html:7
+#, python-format
+msgid "Mitglied zu %(board.name)s hinzufügen"
+msgstr ""
+
+#: .\board\templates\board\add_member.html:11
+msgid "Hinzufügen"
+msgstr ""
+
+#: .\board\templates\board\add_member.html:13
+#: .\board\templates\board\create_board.html:13
+#: .\board\templates\board\create_card.html:13
+msgid "Zurück"
+msgstr ""
+
+#: .\board\templates\board\board_detail.html:9
+msgid "Beiträge"
+msgstr ""
+
+#: .\board\templates\board\board_detail.html:21
+msgid "Likes: "
+msgstr ""
+
+#: .\board\templates\board\board_detail.html:22
+#, python-format
+msgid "1 Like"
+msgid_plural "%(likes)s Likes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\board\templates\board\board_detail.html:26
+#, python-format
+msgid ""
+"  <!-- Variablen mit Filter -->\n"
+"                    von %(author)s am %(date)s\n"
+"                "
+msgstr ""
+
+#: .\board\templates\board\board_detail.html:32
+msgid "Anhang"
+msgstr ""
+
+#: .\board\templates\board\board_list.html:4
+#: .\board\templates\board\board_list.html:7
+msgid "Your Boards"
+msgstr ""
+
+#: .\board\templates\board\board_list.html:15
+#, fuzzy
+#| msgid "Create new board"
+msgid "Create New Board"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\create_board.html:4
+#, fuzzy
+#| msgid "Create new board"
+msgid "Create Board"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\create_board.html:7
 msgid "Create new board"
 msgstr "Neues Board erstellen"
 
-#: bulletin_board/settings.py:122
+#: .\board\templates\board\create_board.html:11
+#: .\board\templates\board\create_card.html:11
+msgid "Erstellen"
+msgstr ""
+
+#: .\board\templates\board\create_card.html:4
+#, fuzzy
+#| msgid "Create new board"
+msgid "Create Card"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\create_card.html:7
+#, python-format
+msgid "Neuer Beitrag für %(board.name)s"
+msgstr ""
+
+#: .\board\templates\board\home.html:4
+msgid "Welcome!"
+msgstr ""
+
+#: .\board\templates\board\home.html:7
+msgid "Welcome to the Bulletin Board App!"
+msgstr ""
+
+#: .\board\templates\board\home.html:9
+msgid "You are already logged in."
+msgstr ""
+
+#: .\board\templates\board\home.html:11
+msgid "Please log in or register to get started."
+msgstr ""
+
+#: .\board\templates\board\home.html:14
+msgid "Register"
+msgstr ""
+
+#: .\bulletin_board\settings.py:112
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
-#: bulletin_board/settings.py:123
+#: .\bulletin_board\settings.py:113
 msgid "German"
+msgstr "Deutsch"
+
+#: .\bulletin_board\settings.py:114
+msgid "French"
+msgstr "Französisch"
+
+#: .\bulletin_board\settings.py:115
+msgid "Italian"
 msgstr ""
 
-#: bulletin_board/settings.py:124
-msgid "French"
+#: .\bulletin_board\settings.py:116
+msgid "Spanish"
 msgstr ""

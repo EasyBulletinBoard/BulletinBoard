@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Add member{% endblock %}
+{% block title %}{% trans "Add member" %}{% endblock %}
 
 {% block content %}
-    <h1>Mitglied zu {{ board.name }} hinzufügen</h1>
+    <h1>{% blocktrans %}Mitglied zu {{ board.name }} hinzufügen{% endblocktrans %}</h1>  <!-- Dynamischer Text mit blocktrans -->
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Hinzufügen</button>
+        <button type="submit">{% trans "Hinzufügen" %}</button>  <!-- Button-Text übersetzt -->
     </form>
-    <a href="{% url 'board_detail' board.id %}">Zurück</a>
+    <a href="{% url 'board_detail' board.id %}">{% trans "Zurück" %}</a>  <!-- Link-Text übersetzt -->
 {% endblock %}

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Create Card{% endblock %}
+{% block title %}{% trans "Create Card" %}{% endblock %}
 
 {% block content %}
-    <h1>Neuer Beitrag für {{ board.name }}</h1>
+    <h1>{% blocktrans %}Neuer Beitrag für {{ board.name }}{% endblocktrans %}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Erstellen</button>
+        <button type="submit">{% trans "Erstellen" %}</button>
     </form>
-    <a href="{% url 'board_detail' board.id %}">Zurück</a>
+    <a href="{% url 'board_detail' board.id %}">{% trans "Zurück" %}</a>
 {% endblock %}

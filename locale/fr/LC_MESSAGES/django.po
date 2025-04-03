@@ -16,99 +16,99 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\account\templates\account.html:7
 msgid "Mein Konto"
-msgstr "My Account"
+msgstr ""
 
 #: .\account\templates\account.html:12 .\account\templates\login.html:12
 #: .\board\templates\settings.html:7
 msgid "Dark Mode"
-msgstr ""
+msgstr "Mode sombre"
 
 #: .\account\templates\account.html:13
 msgid "Willkommen auf deiner Kontoseite!"
-msgstr "Welcome on your Account page"
+msgstr "Bienvenue sur la page de votre compte !"
 
 #: .\account\templates\account.html:15 .\account\templates\login.html:14
 #: .\account\templates\signup.html:8
 msgid "Du bist bereits eingeloggt."
-msgstr "You're already logged in"
+msgstr "Vous êtes déjà connecté."
 
 #: .\account\templates\account.html:16 .\account\templates\login.html:15
 #: .\account\templates\signup.html:9
 msgid "Zu meinen Pinnwänden"
-msgstr "To your Boards"
+msgstr "À mes tableaux d'affichage"   
 
 #: .\account\templates\account.html:18
 msgid "Hier sind deine Optionen:"
-msgstr "Your Options"
+msgstr "Voici vos options:"
 
 #: .\account\templates\account.html:20 .\account\templates\signup.html:14
 #: .\account\templates\signup.html:18
 msgid "Registrieren"
-msgstr "Register"
+msgstr ""
 
 #: .\account\templates\account.html:21
 msgid "Anmelden"
-msgstr "Login"
+msgstr "Registre"
 
 #: .\account\templates\account.html:22
 msgid "Abmelden"
-msgstr "Logout"
+msgstr "Registre"
 
 #: .\account\templates\login.html:7 .\account\templates\login.html:20
 #: .\board\templates\board\home.html:13
 msgid "Login"
-msgstr ""
+msgstr "Se connecter"
 
 #: .\account\templates\login.html:24
 msgid "Einloggen"
-msgstr "Login"
+msgstr "Se connecter"
 
 #: .\account\templates\login.html:26
 msgid "Noch kein Konto? Registrieren"
-msgstr "No Account? Register"
+msgstr "Pas encore de compte ? Registre"
 
 #: .\account\templates\signup.html:4
 msgid "Signup"
-msgstr ""
+msgstr "S'inscrire"
 
 #: .\account\templates\signup.html:20
 msgid "Schon ein Konto? Login"
-msgstr "Already an Account? Login"
+msgstr "Vous avez déjà un compte ? Se connecter"
 
 #: .\board\templates\base.html:8
 msgid "Bulletin Board"
-msgstr "Bulletin Board"
+msgstr ""
 
 #: .\board\templates\board\add_member.html:4
 msgid "Add member"
-msgstr ""
+msgstr "Ajouter un membre"
 
 #: .\board\templates\board\add_member.html:7
 #, python-format
 msgid "Mitglied zu %(board.name)s hinzufügen"
-msgstr "Add member to %(board.name)s"
+msgstr "Ajouter un membre à %(board.name)s"
 
 #: .\board\templates\board\add_member.html:11
 msgid "Hinzufügen"
-msgstr "Add"
+msgstr "Ajouter"
 
 #: .\board\templates\board\add_member.html:13
 #: .\board\templates\board\create_board.html:13
 #: .\board\templates\board\create_card.html:13
 msgid "Zurück"
-msgstr "Back"
+msgstr "Dos"
 
 #: .\board\templates\board\board_detail.html:9
 msgid "Beiträge"
-msgstr "Posts"
+msgstr "Contributions"
 
 #: .\board\templates\board\board_detail.html:21
 msgid "Likes: "
-msgstr ""
+msgstr "Goûts: "
 
 #: .\board\templates\board\board_detail.html:22
 #, python-format
@@ -127,48 +127,52 @@ msgstr ""
 
 #: .\board\templates\board\board_detail.html:32
 msgid "Anhang"
-msgstr "Attachment"
+msgstr "Pièce jointe"
 
 #: .\board\templates\board\board_list.html:4
 #: .\board\templates\board\board_list.html:7
 msgid "Your Boards"
-msgstr ""
+msgstr "Vos planches"
 
 #: .\board\templates\board\board_list.html:15
+#, fuzzy
+#| msgid "Create new board"
 msgid "Create New Board"
-msgstr ""
+msgstr "Créer un nouveau tableau"
 
 #: .\board\templates\board\create_board.html:4
 #, fuzzy
-#| msgid "Bulletin Board"
+#| msgid "Create new board"
 msgid "Create Board"
-msgstr "Bulletin Board"
+msgstr "Créer un nouveau tableau"
 
 #: .\board\templates\board\create_board.html:7
 msgid "Create new board"
-msgstr ""
+msgstr "Créer un nouveau tableau"
 
 #: .\board\templates\board\create_board.html:11
 #: .\board\templates\board\create_card.html:11
 msgid "Erstellen"
-msgstr "Create"
+msgstr "Créer"
 
 #: .\board\templates\board\create_card.html:4
+#, fuzzy
+#| msgid "Create new board"
 msgid "Create Card"
-msgstr ""
+msgstr "Créer un nouveau tableau"
 
 #: .\board\templates\board\create_card.html:7
 #, python-format
 msgid "Neuer Beitrag für %(board.name)s"
-msgstr "New post for %(board.name)s"
+msgstr "Nouveau message pour %(board.name)s"
 
 #: .\board\templates\board\home.html:4
 msgid "Welcome!"
-msgstr ""
+msgstr "Bienvenu!"
 
 #: .\board\templates\board\home.html:7
 msgid "Welcome to the Bulletin Board App!"
-msgstr ""
+msgstr "Bienvenue sur l'application Bulletin Board!"
 
 #: .\board\templates\board\home.html:9
 msgid "You are already logged in."
@@ -176,23 +180,23 @@ msgstr ""
 
 #: .\board\templates\board\home.html:11
 msgid "Please log in or register to get started."
-msgstr ""
+msgstr "Vous êtes déjà connecté."
 
 #: .\board\templates\board\home.html:14
 msgid "Register"
-msgstr ""
+msgstr "Registre"
 
 #: .\bulletin_board\settings.py:112
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: .\bulletin_board\settings.py:113
 msgid "German"
-msgstr "German"
+msgstr "Allemand"
 
 #: .\bulletin_board\settings.py:114
 msgid "French"
-msgstr "French"
+msgstr "Français"
 
 #: .\bulletin_board\settings.py:115
 msgid "Italian"
