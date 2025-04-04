@@ -1,22 +1,22 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Signup{% endblock %}
+{% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-    <p>Du bist bereits eingeloggt.</p>
-    <a href="{% url 'board_list' %}">Zu meinen Pinnwänden</a>
+    <p>{% trans "Du bist bereits eingeloggt." %}</p>
+    <a href="{% url 'board_list' %}">{% trans "Zu meinen Pinnwänden" %}</a>
     <script>
         window.location.href = "{% url 'board_list' %}";
     </script>
 {% else %}
-    <h1>Registrieren</h1>
+    <h1>{% trans "Registrieren" %}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Registrieren</button>
+        <button type="submit">{% trans "Registrieren" %}</button>
     </form>
-    <a href="{% url 'login' %}">Schon ein Konto? Login</a>
+    <a href="{% url 'login' %}">{% trans "Schon ein Konto? Login" %}</a>
 {% endif %}
-
 {% endblock %}

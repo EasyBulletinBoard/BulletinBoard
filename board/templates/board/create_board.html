@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}Create Board{% endblock %}
+{% block title %}{% trans "Create Board" %}{% endblock %}
 
 {% block content %}
 <h1>{% trans "Create new board" %}</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Erstellen</button>
+    <button type="submit">{% trans "Erstellen" %}</button>
 </form>
-<a href="{% url 'board_list' %}">Zurück</a>
+<a href="{% url 'board_list' %}">{% trans "Zurück" %}</a>
 {% endblock %}
