@@ -105,6 +105,8 @@ def like_card(request, card_id):
 
 @login_required
 def delete_card(request, card_id):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(["POST"])
     card = get_object_or_404(Card, id=card_id)
     if request.user == card.author or request.user == card.board.owner:
         card.delete()
