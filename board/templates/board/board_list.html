@@ -2,13 +2,19 @@
 {% load i18n %}
 
 {% block title %}{% trans "Your Boards" %}{% endblock %}
+{% block extra_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+{% endblock %}
 
 {% block content %}
 <h1>{% trans "Your Boards" %}</h1>
-<div class="grid">
+<div class="grid board-grid">
     {% for board in boards %}
         <a href="{% url 'board_detail' board.id %}" class="board-card">
-            {{ board.name }}
+            <div class="board-card-content">
+                <h2>{{ board.name }}</h2>
+            </div>
         </a>
     {% endfor %}
 </div>
