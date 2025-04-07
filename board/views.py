@@ -102,3 +102,13 @@ def like_card(request, card_id):
         card.liked_by.add(request.user)
     card.save()
     return JsonResponse({'likes': card.likes})
+
+@login_required
+def delete_card(request, card_id):
+    if request.method != "POST":
+        return HttpResponseNotAllowed(["POST"])
+    card = get_object_or_404(Card, id=card_id)
+    if request.user == card.author or request.user == card.board.owner:
+        card.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False, 'error': 'Permission denied'}, status=403)

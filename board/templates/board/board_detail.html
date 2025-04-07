@@ -6,10 +6,13 @@
 {% block content %}
 <h1>{{ board.name }}</h1>
 
-<h2>{% trans "Beiträge" %}</h2>  <!-- Statischer Text übersetzt -->
+<h2>{% trans "Beiträge" %}</h2>
+<button onclick="window.location.href='{% url 'create_card' board.id %}'" style="margin-bottom: 10px;">
+    {% trans "Create Post" %}
+</button>
 <ul style="list-style: none; padding: 0;">
     {% for card in cards %}
-        <div class="card">
+        <div class="card" oncontextmenu="showContextMenu(event, {{ card.id }})">
             <strong>{{ card.title }}</strong>
             <button class="like-card-button" data-card-id="{{ card.id }}">
                 {% if request.user in card.liked_by.all %}
@@ -35,7 +38,48 @@
     {% endfor %}
 </ul>
 
+<div id="context-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000;">
+    <ul style="margin: 0; padding: 0; list-style: none;">
+        <li><button id="delete-card-button" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">Delete Card</button></li>
+    </ul>
+</div>
+
 <script>
+    let currentCardId = null;
+
+    function showContextMenu(event, cardId) {
+        event.preventDefault();
+        currentCardId = cardId;
+        const contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = `${event.pageX}px`;
+        contextMenu.style.top = `${event.pageY}px`;
+    }
+
+    document.addEventListener('click', () => {
+        document.getElementById('context-menu').style.display = 'none';
+    });
+
+    document.getElementById('delete-card-button').addEventListener('click', () => {
+        if (currentCardId) {
+            fetch(`/boards/cards/${currentCardId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert(data.error || 'Failed to delete card.');
+                }
+            });
+        }
+    });
+
     document.querySelectorAll('.like-card-button').forEach(button => {
         button.addEventListener('click', function() {
             const cardId = this.getAttribute('data-card-id');

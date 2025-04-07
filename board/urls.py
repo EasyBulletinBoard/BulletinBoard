@@ -10,4 +10,5 @@ urlpatterns = [
     path("signup/", views.signup, name="signup"),
     path("settings/", views.settings, name="settings"),
     path("cards/<int:card_id>/like/", views.like_card, name="like_card"),
+    path("cards/<int:card_id>/delete/", views.delete_card, name="delete_card"),
 ]
