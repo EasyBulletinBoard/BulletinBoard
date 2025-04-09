@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block title %}{% trans "Your Boards" %}{% endblock %}
 {% block extra_css %}
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
 {% endblock %}
 
@@ -11,12 +10,57 @@
 <h1>{% trans "Your Boards" %}</h1>
 <div class="grid board-grid">
     {% for board in boards %}
-        <a href="{% url 'board_detail' board.id %}" class="board-card">
-            <div class="board-card-content">
-                <h2>{{ board.name }}</h2>
-            </div>
-        </a>
+        <div class="board-card" oncontextmenu="showContextMenu(event, '{{ board.id }}')">
+            <a href="{% url 'board_detail' board.id %}" class="board-card-link">
+                <div class="board-card-content">
+                    <h2>{{ board.name }}</h2>
+                </div>
+            </a>
+        </div>
     {% endfor %}
 </div>
 <a href="{% url 'create_board' %}" class="create-board">{% trans "Create New Board" %}</a>
+
+<div id="context-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000;">
+    <ul style="margin: 0; padding: 0; list-style: none;">
+        <li><button id="delete-board-button" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">{% trans "Delete Board" %}</button></li>
+    </ul>
+</div>
+
+<script>
+    let currentBoardId = null;
+
+    function showContextMenu(event, boardId) {
+        event.preventDefault();
+        currentBoardId = boardId;
+        const contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = `${event.pageX}px`;
+        contextMenu.style.top = `${event.pageY}px`;
+    }
+
+    document.addEventListener('click', () => {
+        document.getElementById('context-menu').style.display = 'none';
+    });
+
+    document.getElementById('delete-board-button').addEventListener('click', () => {
+        if (currentBoardId) {
+            fetch(`/boards/${currentBoardId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert(data.error || '{% trans "Failed to delete board." %}');
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}

@@ -112,3 +112,14 @@ def delete_card(request, card_id):
         card.delete()
         return JsonResponse({'success': True})
     return JsonResponse({'success': False, 'error': 'Permission denied'}, status=403)
+
+@login_required
+def delete_board(request, board_id):
+    if request.method == 'POST':
+        try:
+            board = get_object_or_404(Board, id=board_id)
+            board.delete()
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})

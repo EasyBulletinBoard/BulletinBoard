@@ -11,4 +11,5 @@ urlpatterns = [
     path("settings/", views.settings, name="settings"),
     path("cards/<int:card_id>/like/", views.like_card, name="like_card"),
     path("cards/<int:card_id>/delete/", views.delete_card, name="delete_card"),
+    path('<int:board_id>/delete/', views.delete_board, name='delete_board'),
 ]
