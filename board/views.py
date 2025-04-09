@@ -5,7 +5,7 @@ from .forms import BoardForm, CardForm, AddMemberForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.http import require_POST
 
 def home(request):
