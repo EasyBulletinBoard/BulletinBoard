@@ -16,6 +16,7 @@
                     <h2>{{ board.name }}</h2>
                 </div>
             </a>
+            <button class="delete-board-button-small" onclick="confirmDeleteBoard('{{ board.id }}')">×</button>
         </div>
     {% endfor %}
 </div>
@@ -23,7 +24,7 @@
 
 <div id="context-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000;">
     <ul style="margin: 0; padding: 0; list-style: none;">
-        <li><button id="delete-board-button" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">{% trans "Delete Board" %}</button></li>
+        <li><button onclick="confirmDeleteCurrentBoard()" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">{% trans "Delete Board" %}</button></li>
     </ul>
 </div>
 
@@ -43,24 +44,55 @@
         document.getElementById('context-menu').style.display = 'none';
     });
 
-    document.getElementById('delete-board-button').addEventListener('click', () => {
+    function confirmDeleteCurrentBoard() {
         if (currentBoardId) {
-            fetch(`/boards/${currentBoardId}/delete/`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert(data.error || '{% trans "Failed to delete board." %}');
-                }
-            });
+            confirmDeleteBoard(currentBoardId);
         }
-    });
+    }
+
+    function confirmDeleteBoard(boardId) {
+        if (confirm('{% trans "Möchtest du dieses Board wirklich löschen?" %}')) {
+            deleteBoard(boardId);
+        }
+    }
+
+    function deleteBoard(boardId) {
+        fetch(`/boards/${boardId}/delete/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert(data.error || '{% trans "Failed to delete board." %}');
+            }
+        });
+    }
 </script>
+
+<style>
+    .delete-board-button-small {
+        background: none;
+        border: none;
+        color: #888;
+        font-size: 14px;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 0;
+        line-height: 1;
+    }
+    .delete-board-button-small:hover {
+        color: #555;
+    }
+    .board-card {
+        position: relative; /* Needed for absolute positioning of the button */
+    }
+</style>
 {% endblock %}
