@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-02 21:03+0200\n"
+"POT-Creation-Date: 2025-04-09 18:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,36 +106,64 @@ msgstr "Back"
 msgid "Beiträge"
 msgstr "Posts"
 
-#: .\board\templates\board\board_detail.html:21
+#: .\board\templates\board\board_detail.html:11
+#, fuzzy
+#| msgid "Bulletin Board"
+msgid "Create Post"
+msgstr "Bulletin Board"
+
+#: .\board\templates\board\board_detail.html:24
 msgid "Likes: "
 msgstr ""
 
-#: .\board\templates\board\board_detail.html:22
+#: .\board\templates\board\board_detail.html:25
 #, python-format
 msgid "1 Like"
 msgid_plural "%(likes)s Likes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\board\templates\board\board_detail.html:26
+#: .\board\templates\board\board_detail.html:29
 #, python-format
 msgid ""
-"  <!-- Variablen mit Filter -->\n"
+"\n"
 "                    von %(author)s am %(date)s\n"
 "                "
 msgstr ""
 
-#: .\board\templates\board\board_detail.html:32
+#: .\board\templates\board\board_detail.html:35
 msgid "Anhang"
 msgstr "Attachment"
 
+#: .\board\templates\board\board_detail.html:44
+msgid "Delete Card"
+msgstr ""
+
+#: .\board\templates\board\board_detail.html:71
+msgid "Möchtest du diese Karte wirklich löschen?"
+msgstr "Do you really want to delete this card?"
+
 #: .\board\templates\board\board_list.html:4
-#: .\board\templates\board\board_list.html:7
+#: .\board\templates\board\board_list.html:10
 msgid "Your Boards"
 msgstr ""
 
-#: .\board\templates\board\board_list.html:15
+#: .\board\templates\board\board_list.html:23
 msgid "Create New Board"
+msgstr ""
+
+#: .\board\templates\board\board_list.html:27
+#, fuzzy
+#| msgid "Bulletin Board"
+msgid "Delete Board"
+msgstr "Bulletin Board"
+
+#: .\board\templates\board\board_list.html:54
+msgid "Möchtest du dieses Board wirklich löschen?"
+msgstr "Do you really want to delete this board?"
+
+#: .\board\templates\board\board_list.html:72
+msgid "Failed to delete board."
 msgstr ""
 
 #: .\board\templates\board\create_board.html:4

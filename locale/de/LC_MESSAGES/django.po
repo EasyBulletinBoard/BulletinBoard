@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-02 21:03+0200\n"
+"POT-Creation-Date: 2025-04-09 18:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,39 +106,69 @@ msgstr ""
 msgid "Beiträge"
 msgstr ""
 
-#: .\board\templates\board\board_detail.html:21
+#: .\board\templates\board\board_detail.html:11
+#, fuzzy
+#| msgid "Create new board"
+msgid "Create Post"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\board_detail.html:24
 msgid "Likes: "
 msgstr ""
 
-#: .\board\templates\board\board_detail.html:22
+#: .\board\templates\board\board_detail.html:25
 #, python-format
 msgid "1 Like"
 msgid_plural "%(likes)s Likes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: .\board\templates\board\board_detail.html:26
+#: .\board\templates\board\board_detail.html:29
 #, python-format
 msgid ""
-"  <!-- Variablen mit Filter -->\n"
+"\n"
 "                    von %(author)s am %(date)s\n"
 "                "
 msgstr ""
 
-#: .\board\templates\board\board_detail.html:32
+#: .\board\templates\board\board_detail.html:35
 msgid "Anhang"
 msgstr ""
 
+#: .\board\templates\board\board_detail.html:44
+#, fuzzy
+#| msgid "Create new board"
+msgid "Delete Card"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\board_detail.html:71
+msgid "Möchtest du diese Karte wirklich löschen?"
+msgstr ""
+
 #: .\board\templates\board\board_list.html:4
-#: .\board\templates\board\board_list.html:7
+#: .\board\templates\board\board_list.html:10
 msgid "Your Boards"
 msgstr ""
 
-#: .\board\templates\board\board_list.html:15
+#: .\board\templates\board\board_list.html:23
 #, fuzzy
 #| msgid "Create new board"
 msgid "Create New Board"
 msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\board_list.html:27
+#, fuzzy
+#| msgid "Create new board"
+msgid "Delete Board"
+msgstr "Neues Board erstellen"
+
+#: .\board\templates\board\board_list.html:54
+msgid "Möchtest du dieses Board wirklich löschen?"
+msgstr ""
+
+#: .\board\templates\board\board_list.html:72
+msgid "Failed to delete board."
+msgstr "Das Löschen des Boards ist fehlgeschlagen."
 
 #: .\board\templates\board\create_board.html:4
 #, fuzzy
@@ -172,19 +202,19 @@ msgstr ""
 
 #: .\board\templates\board\home.html:7
 msgid "Welcome to the Bulletin Board App!"
-msgstr ""
+msgstr "Willkommen zur Bulletin Board App"
 
 #: .\board\templates\board\home.html:9
 msgid "You are already logged in."
-msgstr ""
+msgstr "Du bist schon eingeloggt"
 
 #: .\board\templates\board\home.html:11
 msgid "Please log in or register to get started."
-msgstr ""
+msgstr "Bitte melde dich an oder registriere dich, um fortzufahren"
 
 #: .\board\templates\board\home.html:14
 msgid "Register"
-msgstr ""
+msgstr "Registrieren"
 
 #: .\bulletin_board\settings.py:112
 msgid "English"
