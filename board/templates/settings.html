@@ -8,5 +8,11 @@
     <br>
     <br>
     <a href="/"><button>Zur Startseite</button></a> 
+    <br>
+    <br>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Ausloggen</button>
+    </form>
     <script src="{% static 'js/theme-toggle.js' %}"></script>
 {% endblock %}
