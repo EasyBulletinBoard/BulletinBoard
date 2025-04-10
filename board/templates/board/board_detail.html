@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}  <!-- i18n-Tag hinzugefügt -->
+{% load i18n %}
 
 {% block title %}{{ board.name }}{% endblock %}
 
@@ -7,12 +7,12 @@
 <h1>{{ board.name }}</h1>
 
 <h2>{% trans "Beiträge" %}</h2>
-<button onclick="window.location.href='{% url 'create_card' board.id %}'" style="margin-bottom: 10px;">
+<button onclick="window.location.href='{% url "create_card" board.id %}';" style="margin-bottom: 10px;">
     {% trans "Create Post" %}
 </button>
 <ul style="list-style: none; padding: 0;">
     {% for card in cards %}
-        <div class="card" oncontextmenu="showContextMenu(event, {{ card.id }})">
+        <div class="card" oncontextmenu="showContextMenu(event, '{{ card.id }}')">
             <strong>{{ card.title }}</strong>
             <button class="like-card-button" data-card-id="{{ card.id }}">
                 {% if request.user in card.liked_by.all %}
@@ -21,26 +21,27 @@
                     👍
                 {% endif %}
             </button>
-            <span class="likes-count" data-card-id="{{ card.id }}" data-likes-text="{% trans 'Likes: ' %}">  <!-- Übersetzter Text als Data-Attribut -->
-                {% blocktrans count likes=card.likes %}1 Like{% plural %}{{ likes }} Likes{% endblocktrans %}  <!-- Plural-Form für Likes -->
+            <span class="likes-count" data-card-id="{{ card.id }}" data-likes-text="{% trans 'Likes: ' %}">
+                {% blocktrans count likes=card.likes %}1 Like{% plural %}{{ likes }} Likes{% endblocktrans %}
             </span>
             <br>
             <small>
-                {% blocktrans with author=card.author|safe date=card.created_at|date:"SHORT_DATE_FORMAT" %}  <!-- Variablen mit Filter -->
+                {% blocktrans with author=card.author|safe date=card.created_at|date:"SHORT_DATE_FORMAT" %}
                     von {{ author }} am {{ date }}
                 {% endblocktrans %}
             </small>
             <p>{{ card.content }}</p>
             {% if card.attachment %}
-                <img src="/media/{{ card.attachment }}" alt="{% trans 'Anhang' %}">  <!-- Alt-Text übersetzt -->
+                <img src="/media/{{ card.attachment }}" alt="{% trans 'Anhang' %}">
             {% endif %}
+            <button class="delete-card-button-small" onclick="confirmDeleteCard('{{ card.id }}')">×</button>
         </div>
     {% endfor %}
 </ul>
 
 <div id="context-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000;">
     <ul style="margin: 0; padding: 0; list-style: none;">
-        <li><button id="delete-card-button" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">Delete Card</button></li>
+        <li><button onclick="confirmDeleteCurrentCard()" style="background: none; border: none; padding: 5px; cursor: pointer; color: black;">{% trans "Delete Card" %}</button></li>
     </ul>
 </div>
 
@@ -60,31 +61,41 @@
         document.getElementById('context-menu').style.display = 'none';
     });
 
-    document.getElementById('delete-card-button').addEventListener('click', () => {
+    function confirmDeleteCurrentCard() {
         if (currentCardId) {
-            fetch(`/boards/cards/${currentCardId}/delete/`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': '{{ csrf_token }}',
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert(data.error || 'Failed to delete card.');
-                }
-            });
+            confirmDeleteCard(currentCardId);
         }
-    });
+    }
+
+    function confirmDeleteCard(cardId) {
+        if (confirm('{% trans "Möchtest du diese Karte wirklich löschen?" %}')) {
+            deleteCard(cardId);
+        }
+    }
+
+    function deleteCard(cardId) {
+        fetch(`/boards/cards/${cardId}/delete/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert(data.error || 'Failed to delete card.');
+            }
+        });
+    }
 
     document.querySelectorAll('.like-card-button').forEach(button => {
         button.addEventListener('click', function() {
             const cardId = this.getAttribute('data-card-id');
             const likesElement = document.querySelector(`.likes-count[data-card-id="${cardId}"]`);
-            const likesText = likesElement.getAttribute('data-likes-text');  <!-- Übersetzten Text aus Data-Attribut holen -->
+            const likesText = likesElement.getAttribute('data-likes-text');
 
             fetch(`/boards/cards/${cardId}/like/`, {
                 method: 'POST',
@@ -101,4 +112,31 @@
         });
     });
 </script>
+
+<style>
+.delete-card-button-small {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 0;
+    line-height: 1;
+}
+
+.delete-card-button-small:hover {
+    color: #555;
+}
+
+.card {
+    position: relative; /* Needed for absolute positioning of the button */
+    margin-bottom: 15px; /* Damit der Button nicht mit dem nächsten Element kollidiert */
+    padding-right: 30px; /* Platz für den Button schaffen */
+    border: 1px solid #eee;
+    padding: 10px;
+}
+</style>
 {% endblock %}
